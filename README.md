@@ -1,4 +1,5 @@
 human_counter
 =============
 
-arduino device for counting visitors
+Система подсчета посетителей
+arduino and ir receivers based system for counting visitors
