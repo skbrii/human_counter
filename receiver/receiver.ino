@@ -3,7 +3,8 @@
 int RECV_PIN1 = 11;
 int RECV_PIN2 = 12;
 int dp = 0;
-int counter = 0;
+int counter1 = 0;
+int counter2 = 0;
 int flag = 0;
 int r1 = 0;
 int r2 = 0;
@@ -40,24 +41,49 @@ void loop() {
     //delay(1);
   } 
   else {
-    if (flag == 1) {
-      Serial.print("hmm ");
-      Serial.print(millis() - dp);
-      Serial.println(" millis");
-      flag = 0;
-      counter++;
-      dp = 0;
-      Serial.print("Count:");
-      Serial.println(counter);
-    } 
-    else {
-      dp = millis();
-      flag = 1;
+    if ((r1 == 0) && (r2 != 0)) {
+      if (flag == 1) {
+       // Serial.print("hmm ");
+       // Serial.print(millis() - dp);
+       // Serial.println(" millis");
+        flag = 0;
+        counter1++;
+        //counter2++;
+        dp = 0;
+        Serial.print("Count1:");
+        Serial.println(counter1);
+        //Serial.print("Count2:");
+        //Serial.println(counter2);
+      } 
+      else {
+        dp = millis();
+        flag = 1;
+      }
+    }
+    if ((r1 != 0) && (r2 == 0)) {
+      if (flag == 1) {
+        //Serial.print("hmm ");
+        //Serial.print(millis() - dp);
+        //Serial.println(" millis");
+        flag = 0;
+        //counter1++;
+        counter2++;
+        dp = 0;
+        //Serial.print("Count1:");
+        //Serial.println(counter1);
+        Serial.print("Count2:");
+        Serial.println(counter2);
+      } 
+      else {
+        dp = millis();
+        flag = 1;
+      }
     }
   }
   r1 = 0;
   r2 = 0;
   delay(10);
 }
+
 
 
